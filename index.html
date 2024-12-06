@@ -1,181 +1,212 @@
 <!doctype html>
-
 <html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Circuit Simulator</title>
+</head>
+<body>
+    <div id="divMain">
+        <div id="divToolbox">
+            <!-- Example Buttons -->
+            <button class="buttonTool">
+                <img class="buttonToolIcon" src="icon1.png" alt="Tool 1"/>
+            </button>
+            <button class="buttonTool">
+                <img class="buttonToolIcon" src="icon2.png" alt="Tool 2"/>
+            </button>
+        </div>
+        <div id="divFloatingEditBox"></div>
+        <div id="divEditor">
+            <canvas id="canvasMain" width="1280" height="720"></canvas>
+        </div>
+    </div>
+</body>
 
-	<head>
-		<meta charset="utf-8"/>
-		<title>Circuit Simulator</title>
-	</head>
-	
-	
-	<body>
-		<div id="divMain">
-			<div id="divToolbox"></div>
-			<div id="divFloatingEditBox"></div>
-			<div id="divEditor">
-				<canvas id="canvasMain" width="1280" height="720"></canvas>
-			</div>
-		</div>
-		
-	</body>
-	
-	
-	<style>
-		body
-		{
-			margin: 0;
-			border: 0;
-			padding: 0;
-			width: 100vw;
-			height: 100vh;
-			overflow: hidden;
-			font-family: Verdana, sans-serif;
-			font-size: 0.9em;
-		}
-	
-		#divMain
-		{
-			display: grid;
-			width: 100%;
-			height: 100%;
-			grid-template-columns: 1fr;
-			grid-template-rows: auto 1fr;
-		}
-		
-		#divToolbox
-		{
-			grid-column: 1;
-			grid-row: 1;
-			background-color: #223;
-			border-bottom: 1px solid #668;
-			padding: 0.5em;
-		}
-		
-		#divFloatingEditBox
-		{
-			position: absolute;
-		}
-		
-		#divEditor
-		{
-			grid-column: 1;
-			grid-row: 2;
-			background-color: #000;
-			overflow: hidden;
-		}
-		
-		#canvasMain
-		{
-			width: 100%;
-			height: 100%;
-		}
-		
-		.buttonTool
-		{
-			width: 5em;
-			height: 5em;
-			margin-top: 0.5em;
-			margin-right: 0.5em;
-			border: 2px solid #88a;
-			border-radius: 0.5em;
-			background-color: transparent;
-			outline: none;
-		}
-		
-		.buttonTool:hover
-		{
-			background-color: #88a;
-		}
-		
-		.buttonTool:active
-		{
-			background-color: #446;
-		}
-		
-		.buttonToolSelected
-		{
-			background-color: #851;
-		}
-		
-		.buttonToolSelected:hover
-		{
-			background-color: #851;
-		}
-		
-		.buttonToolIcon
-		{
-			width: 4em;
-			height: 4em;
-		}
-		
-		.toolbarButton
-		{
-			background-color: #668;
-			color: #fff;
-			border: 2px solid #668;
-			border-radius: 0.25em;
-			outline: none;
-			user-select: none;
-		}
-		
-		.toolbarButton:hover
-		{
-			background-color: #88a;
-			border-color: #88a;
-		}
-		
-		.toolbarButton:active
-		{
-			background-color: #446;
-			border-color: #446;
-		}
-		
-		.editBox
-		{
-			white-space: nowrap;
-			background-color: #223;
-			color: #def;
-			border: 2px solid #668;
-			border-radius: 0.5em;
-			margin: 0.5em;
-			padding: 0.5em;
-		}
-		
-		.editBoxButton
-		{
-			background-color: #668;
-			color: #def;
-			border: 2px solid #668;
-			border-radius: 0.25em;
-			outline: none;
-			user-select: none;
-		}
-		
-		.editBoxButton:hover
-		{
-			background-color: #88a;
-			border-color: #88a;
-		}
-		
-		.editBoxButton:active
-		{
-			background-color: #446;
-			border-color: #446;
-		}
-		
-		.editBoxNumberInput
-		{
-			width: 3em;
-			padding: 0.5em;
-			background-color: #234;
-			color: #def;
-			text-align: right;
-			border: 1px solid #668;
-			border-radius: 0.25em;
-		}
-	</style>
-	
+<style>
+    :root {
+        --primary-color: #6a5acd;       /* SlateBlue */
+        --secondary-color: #8a2be2;     /* BlueViolet */
+        --accent-color: #ff6347;        /* Tomato (for a vibrant contrast) */
+        --background-dark: #1c1c2e;     /* Dark background for the body */
+        --background-light: #2a2a40;    /* Slightly lighter background for the toolbox */
+        --canvas-background: #1e4d4f;   /* Dark teal for the canvas */
+        --canvas-gradient: #2b6a6e;     /* Gradient teal for the canvas background */
+    }
 
-	<script src="webpack/main.js"></script>
+    body {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.9em;
+        background-color: var(--background-dark);
+    }
 
+    #divMain {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    #divToolbox {
+        grid-column: 1;
+        grid-row: 1;
+        background-color: var(--background-light);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.5em; /* Reduced padding */
+        height: 6em;  /* Reduced height */
+        display: flex;
+        justify-content: center;  /* Center horizontally */
+        align-items: center;  /* Center vertically */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    #divFloatingEditBox {
+        position: absolute;
+        z-index: 10;
+    }
+
+    #divEditor {
+        grid-column: 1;
+        grid-row: 2;
+        background: linear-gradient(to bottom right, var(--canvas-background), var(--canvas-gradient));
+        overflow: hidden;
+        position: relative;
+        padding: 1em; /* Added padding for aesthetic spacing */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        border-radius: 10px; /* Added rounded corners to the editor */
+    }
+
+    #canvasMain {
+        width: 100%;
+        height: 100%;
+        background-color: var(--canvas-background);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        border-radius: 10px; /* Rounded corners for a modern look */
+    }
+
+    .buttonTool {
+        width: 5em; /* Reduced button size slightly */
+        height: 5em; /* Reduced button size slightly */
+        margin: 0.5em;
+        border: 2px solid var(--accent-color);
+        border-radius: 0.5em;
+        background-color: transparent;
+        outline: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .buttonTool::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent, var(--accent-color));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .buttonTool:hover::before {
+        opacity: 0.1;
+    }
+
+    .buttonTool:hover {
+        background-color: rgba(255, 99, 71, 0.1);
+        box-shadow: 0 0 10px rgba(255, 99, 71, 0.2);
+    }
+
+    .buttonTool:active {
+        transform: scale(0.95);
+    }
+
+    .buttonToolSelected {
+        background-color: var(--accent-color);
+        color: white;
+    }
+
+    .buttonToolSelected:hover {
+        background-color: var(--secondary-color);
+    }
+
+    /* Shiny Icon Effect */
+    .buttonToolIcon {
+        width: 4em; /* Slightly reduced icon size */
+        height: 4em; /* Slightly reduced icon size */
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .buttonToolIcon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent 70%);
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+
+    .toolbarButton {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 0.25em;
+        outline: none;
+        user-select: none;
+        transition: all 0.3s ease;
+    }
+
+    .toolbarButton:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .editBox {
+        white-space: nowrap;
+        background-color: var(--background-light);
+        color: white;
+        border: 2px solid var(--accent-color);
+        border-radius: 0.5em;
+        margin: 0.5em;
+        padding: 0.5em;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .editBoxButton {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 0.25em;
+        outline: none;
+        user-select: none;
+        transition: all 0.3s ease;
+    }
+
+    .editBoxButton:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .editBoxNumberInput {
+        width: 3em;
+        padding: 0.5em;
+        background-color: var(--background-dark);
+        color: white;
+        text-align: right;
+        border: 1px solid var(--accent-color);
+        border-radius: 0.25em;
+    }
+</style>
+<script src="webpack/main.js"></script>
 </html>

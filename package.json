@@ -8,19 +8,7 @@
     "watch": "webpack --watch --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hlorenzi/circuitsim.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hlorenzi/circuitsim/issues"
-  },
-  "homepage": "https://github.com/hlorenzi/circuitsim#readme",
-  "browserslist": [
-    "> 0.2%",
-    "not dead",
-    "not ie 11"
-  ],
+ 
   "dependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
