@@ -24,8 +24,9 @@ This simulator was created by two undergraduate students as a practical applicat
 
 ### Prerequisites
 
-- Programming language/environment (e.g., Python 3.x)  
-- Required dependencies (if any, e.g., `numpy`)
+- **Java:** A Java Development Kit (JDK) 11+ installed.
+- **Node.js & npm:** Node.js (LTS version recommended) and npm for managing and running the front-end dependencies.
+- **React:** The front-end of the project is built with React. You will need to have Node.js and npm (or yarn) to run and build the React application.
 
 ### Installation
 
