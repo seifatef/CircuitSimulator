@@ -5,7 +5,6 @@ import { ComponentResistor } from "./componentResistor.js"
 import { ComponentCurrentSource } from "./componentCurrentSource.js"
 import { ComponentCapacitor } from "./componentCapacitor.js"
 import { ComponentInductor } from "./componentInductor.js"
-//import { ComponentVoltageSource } from "./componentVoltageSource.js"
 import { ComponentGround } from "./componentGround.js"
 
 

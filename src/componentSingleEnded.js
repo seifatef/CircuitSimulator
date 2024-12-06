@@ -107,7 +107,7 @@ export class ComponentSingleEnded extends Component
 	{
 		ctx.save()
 		
-		ctx.strokeStyle = "#eeeeee"
+		ctx.strokeStyle = "#00FF00"
 		
 		ctx.beginPath()
 		ctx.arc(this.points[0].x, this.points[0].y, 2, 0, Math.PI * 2)
@@ -155,8 +155,8 @@ export class ComponentSingleEnded extends Component
 		let grad = ctx.createLinearGradient(-symbolSize / 2, 0, symbolSize / 2, 0)
 		grad.addColorStop(0, color1)
 		grad.addColorStop(1, color2)
-		ctx.strokeStyle = grad
-		ctx.fillStyle = grad
+		ctx.strokeStyle = "#00FF00"
+		ctx.fillStyle = "#00FF00"
 	}
 	
 	

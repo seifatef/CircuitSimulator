@@ -50,7 +50,7 @@ export class ComponentGround extends ComponentSingleEnded
 	
 		this.drawSymbolBegin(manager, ctx, symbolSize)
 		
-		ctx.strokeStyle = manager.getVoltageColor(manager.getNodeVoltage(this.nodes[0]))
+		ctx.strokeStyle = "#00FF00";
 		
 		ctx.beginPath()
 		ctx.moveTo(-symbolSize / 2, -smallStrokeSize)

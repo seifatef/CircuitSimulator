@@ -142,14 +142,14 @@ export class ComponentDoubleEnded extends Component
 		
 		ctx.save()
 		
-		ctx.strokeStyle = manager.getVoltageColor(manager.getNodeVoltage(this.nodes[0]))
+		ctx.strokeStyle = "#00FF00"; 
 		ctx.beginPath()
 		ctx.arc(this.points[0].x, this.points[0].y, 2, 0, Math.PI * 2)
 		ctx.moveTo(this.points[0].x, this.points[0].y)
 		ctx.lineTo(this.points[0].x + vectorUnit.x * break1, this.points[0].y + vectorUnit.y * break1)
 		ctx.stroke()
 		
-		ctx.strokeStyle = manager.getVoltageColor(manager.getNodeVoltage(this.nodes[1]))
+		ctx.strokeStyle = "#00FF00"; 
 		ctx.beginPath()
 		ctx.arc(this.points[1].x, this.points[1].y, 2, 0, Math.PI * 2)
 		ctx.moveTo(this.points[0].x + vectorUnit.x * break2, this.points[0].y + vectorUnit.y * break2)
@@ -164,10 +164,10 @@ export class ComponentDoubleEnded extends Component
 	drawSymbolSetGradient(manager, ctx, symbolSize, color1, color2)
 	{
 		let grad = ctx.createLinearGradient(-symbolSize / 2, 0, symbolSize / 2, 0)
-		grad.addColorStop(0, color1)
-		grad.addColorStop(1, color2)
-		ctx.strokeStyle = grad
-		ctx.fillStyle = grad
+		grad.addColorStop(0, "#00FF00")
+		grad.addColorStop(1, "#00FF00")
+		ctx.strokeStyle = "#00FF00"; 
+		ctx.fillStyle = "#00FF00"; 
 	}
 	
 	

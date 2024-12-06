@@ -45,7 +45,7 @@ export class ComponentWire extends ComponentDoubleEnded
 	{
 		ctx.save()
 		
-		ctx.strokeStyle = manager.getVoltageColor(manager.getNodeVoltage(this.nodes[0]))
+		ctx.strokeStyle = "#00FF00";
 		
 		ctx.beginPath()
 		ctx.arc(this.points[0].x, this.points[0].y, 2, 0, Math.PI * 2)

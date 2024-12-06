@@ -7,7 +7,6 @@ import { ComponentResistor } from "./componentResistor.js"
 import { ComponentCurrentSource } from "./componentCurrentSource.js"
 import { ComponentCapacitor } from "./componentCapacitor.js"
 import { ComponentInductor } from "./componentInductor.js"
-//import { ComponentVoltageSource } from "./componentVoltageSource.js"
 import { ComponentGround } from "./componentGround.js"
 import * as MathUtils from "./math.js"
 
@@ -437,7 +436,7 @@ export class CircuitEditor
 		{
 			for (let component of this.components)
 			{
-				if (component instanceof ComponentBattery || component instanceof ComponentVoltageSource)
+				if (component instanceof ComponentBattery )
 				{
 					const key = jointKey(component.points[0])
 					
@@ -643,7 +642,7 @@ export class CircuitEditor
 		
 		if (!this.mouseDown && this.mousePosSnapped != null && this.mouseAddComponentClass != null)
 		{
-			this.ctx.fillStyle = "#eeeeee"
+			this.ctx.fillStyle = "#00FF00"
 			this.ctx.beginPath()
 			this.ctx.arc(this.mousePosSnapped.x, this.mousePosSnapped.y, 6, 0, Math.PI * 2)
 			this.ctx.fill()
@@ -800,7 +799,6 @@ export class CircuitEditor
 			ComponentCurrentSource,
 			ComponentCapacitor,
 			ComponentInductor,
-			ComponentVoltageSource,
 			ComponentGround,
 		]
 		

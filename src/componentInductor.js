@@ -102,9 +102,7 @@ export class ComponentInductor extends ComponentDoubleEnded
 		const arcAmplitude = 25
 	
 		this.drawSymbolBegin(manager, ctx, symbolSize)
-		this.drawSymbolSetGradient(manager, ctx, symbolSize,
-			manager.getVoltageColor(manager.getNodeVoltage(this.nodes[0])),
-			manager.getVoltageColor(manager.getNodeVoltage(this.nodes[1])))
+		this.drawSymbolSetGradient(manager, ctx, symbolSize,"#00FF00","#00FF00")
 			
 		ctx.lineJoin = "round"
 		

@@ -65,9 +65,7 @@ export class ComponentResistor extends ComponentDoubleEnded
 		const symbolSegmentSize = symbolSize / symbolSegments
 	
 		this.drawSymbolBegin(manager, ctx, symbolSize)
-		this.drawSymbolSetGradient(manager, ctx, symbolSize,
-			manager.getVoltageColor(manager.getNodeVoltage(this.nodes[0])),
-			manager.getVoltageColor(manager.getNodeVoltage(this.nodes[1])))
+		this.drawSymbolSetGradient(manager, ctx, symbolSize,"#00FF00","#00FF00")
 		
 		ctx.beginPath()
 		ctx.moveTo(-symbolSize / 2, 0)
