@@ -1,7 +1,9 @@
 # DC Circuit Simulator
 
 **Authors:** [Seif Atef Moussa], [Seif Hesham Abdelmomem]  
-**Project Type:** University Circuit Analysis Project
+**Project Type:** University Circuit Analysis Project  
+**University:** Cairo University, Faculty of Engineering  
+**Department:** Computer Engineering Department
 
 ## Overview
 
@@ -26,7 +28,7 @@ This simulator was created by two undergraduate students as a practical applicat
 
 - **Java:** A Java Development Kit (JDK) 11+ installed.
 - **Node.js & npm:** Node.js (LTS version recommended) and npm for managing and running the front-end dependencies.
-- **React:** The front-end of the project is built with React. You will need to have Node.js and npm (or yarn) to run and build the React application.
+- **React:** The front-end of the project is built with React. You will need Node.js and npm (or yarn) to run and build the React application.
 
 ### Installation
 
