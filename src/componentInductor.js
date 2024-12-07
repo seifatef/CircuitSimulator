@@ -51,13 +51,11 @@ export class ComponentInductor extends ComponentDoubleEnded
 		{
 			this.companionModelResistance = (2 * this.inductance) / manager.timePerIteration
 			solver.stampResistance(this.nodes[0], this.nodes[1], this.companionModelResistance)
-			//console.log("comp resistance (trapezoidal)", this.companionModelResistance)
 		}
 		else
 		{
 			this.companionModelResistance = this.inductance / manager.timePerIteration
 			solver.stampResistance(this.nodes[0], this.nodes[1], this.companionModelResistance)
-			//console.log("comp resistance (back euler)", this.companionModelResistance)
 		}
 	}
 	
@@ -70,13 +68,11 @@ export class ComponentInductor extends ComponentDoubleEnded
 		{
 			this.companionModelCurrent = voltage / this.companionModelResistance + this.current
 			solver.stampCurrentSource(this.nodes[0], this.nodes[1], this.companionModelCurrent)
-			//console.log("voltage, comp current (trapezoidal)", voltage, this.companionModelCurrent)
 		}
 		else
 		{
 			this.companionModelCurrent = this.current
 			solver.stampCurrentSource(this.nodes[0], this.nodes[1], this.companionModelCurrent)
-			//console.log("voltage, comp current (back euler)", voltage, this.companionModelCurrent)
 		}
 	}
 	

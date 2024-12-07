@@ -64,13 +64,13 @@ export class ComponentBattery extends ComponentDoubleEnded
 	
 		this.drawSymbolBegin(manager, ctx, symbolSize)
 		
-		ctx.strokeStyle = manager.getVoltageColor(manager.getNodeVoltage(this.nodes[0]))
+		ctx.strokeStyle = "#00FF00"; 
 		ctx.beginPath()
 		ctx.moveTo(-symbolSize / 2, -smallPlateSize)
 		ctx.lineTo(-symbolSize / 2,  smallPlateSize)
 		ctx.stroke()
 		
-		ctx.strokeStyle = manager.getVoltageColor(manager.getNodeVoltage(this.nodes[1]))
+		ctx.strokeStyle = "#00FF00"; 
 		ctx.beginPath()
 		ctx.moveTo( symbolSize / 2, -bigPlateSize)
 		ctx.lineTo( symbolSize / 2,  bigPlateSize)

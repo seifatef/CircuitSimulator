@@ -60,9 +60,7 @@ export class ComponentCurrentSource extends ComponentDoubleEnded
 		const symbolSize = Math.min(50, this.getLength())
 	
 		this.drawSymbolBegin(manager, ctx, symbolSize)
-		this.drawSymbolSetGradient(manager, ctx, symbolSize,
-			manager.getVoltageColor(manager.getNodeVoltage(this.nodes[0])),
-			manager.getVoltageColor(manager.getNodeVoltage(this.nodes[1])))
+		this.drawSymbolSetGradient("#00FF00","#00FF00")
 		
 		const centerX = (this.nodes[0].x + this.nodes[1].x) / 2
 		const centerY = (this.nodes[0].y + this.nodes[1].y) / 2

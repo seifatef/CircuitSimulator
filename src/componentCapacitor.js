@@ -51,14 +51,11 @@ export class ComponentCapacitor extends ComponentDoubleEnded
 		{
 			this.companionModelResistance = manager.timePerIteration / (2 * this.capacitance)
 			solver.stampResistance(this.nodes[0], this.nodes[1], this.companionModelResistance)
-			//console.log("comp resistance (trapezoidal)", manager.timePerIteration, this.capacitance)
-			//console.log("comp resistance (trapezoidal)", this.companionModelResistance)
 		}
 		else
 		{
 			this.companionModelResistance = manager.timePerIteration / this.capacitance
 			solver.stampResistance(this.nodes[0], this.nodes[1], this.companionModelResistance)
-			//console.log("comp resistance (back euler)", this.companionModelResistance)
 		}
 	}
 	
@@ -71,13 +68,11 @@ export class ComponentCapacitor extends ComponentDoubleEnded
 		{
 			this.companionModelCurrent = -voltage / this.companionModelResistance - this.current
 			solver.stampCurrentSource(this.nodes[0], this.nodes[1], this.companionModelCurrent)
-			//console.log("voltage, comp current (trapezoidal)", voltage, this.companionModelCurrent)
 		}
 		else
 		{
 			this.companionModelCurrent = -voltage / this.companionModelResistance
 			solver.stampCurrentSource(this.nodes[0], this.nodes[1], this.companionModelCurrent)
-			//console.log("voltage, comp current (back euler)", voltage, this.companionModelCurrent)
 		}
 	}
 	
@@ -103,13 +98,13 @@ export class ComponentCapacitor extends ComponentDoubleEnded
 	
 		this.drawSymbolBegin(manager, ctx, symbolSize)
 		
-		ctx.strokeStyle = manager.getVoltageColor(manager.getNodeVoltage(this.nodes[0]))
+		ctx.strokeStyle = "#00FF00"; 
 		ctx.beginPath()
 		ctx.moveTo(-symbolSize / 2, -plateSize)
 		ctx.lineTo(-symbolSize / 2,  plateSize)
 		ctx.stroke()
 		
-		ctx.strokeStyle = manager.getVoltageColor(manager.getNodeVoltage(this.nodes[1]))
+		ctx.strokeStyle = "#00FF00"; 
 		ctx.beginPath()
 		ctx.moveTo( symbolSize / 2, -plateSize)
 		ctx.lineTo( symbolSize / 2,  plateSize)

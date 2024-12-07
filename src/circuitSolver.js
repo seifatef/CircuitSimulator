@@ -89,9 +89,6 @@ export class CircuitSolver
 		this.matrixB.copyTo(this.matrixA, this.nodeNum,            0)
 		this.matrixC.copyTo(this.matrixA,            0, this.nodeNum)
 		
-		//console.log("---")
-		//console.log(this.matrixA.toString())
-		//console.log(this.matrixZ.toString())
 		
 		if (this.nodeNum + this.voltNum <= 1)
 			return
@@ -99,26 +96,13 @@ export class CircuitSolver
 		// Remove ground node rows and columns.
 		this.matrixA = this.matrixA.removeRow(this.groundNodeIndex)
 		this.matrixA = this.matrixA.removeColumn(this.groundNodeIndex)
-		
-		//console.log(this.matrixA.toString())
-		//console.log(this.matrixZ.toString())
-		
-		//console.log("matrixA:")
-		//console.log(this.matrixA.toString())
-		
 		this.matrixAPivots = this.matrixA.luDecompose()
 		if (this.matrixAPivots == null)
 		{
 			console.log("singular matrix")
 			return
 		}
-		
-		//console.log("matrixA decomposed:")
-		//console.log(this.matrixA.toString())
-		//console.log("matrixA pivots:")
-		//console.log(this.matrixAPivots.toString())
-		
-		
+
 		this.matrixIOriginal = this.matrixI.clone()
 		this.matrixEOriginal = this.matrixE.clone()
 		
@@ -145,8 +129,6 @@ export class CircuitSolver
 		
 		this.solution = this.matrixA.luSolve(this.matrixAPivots, this.matrixZ).insertRow(this.groundNodeIndex)
 		
-		//console.log("solution:")
-		//console.log(this.solution.toString())
 	}
 	
 	

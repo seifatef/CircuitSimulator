@@ -215,7 +215,7 @@ export class CircuitEditor
 		this.mouseCurrentAction = null
 		this.componentsForEditing = []
 		
-		if (!ev.ctrlKey)// && (this.mouseCurrentHoverData.component == null || !this.mouseCurrentHoverData.component.isAnySelected()))
+		if (!ev.ctrlKey)
 			this.unselectAll()
 		
 		if (ev.button != 0)
@@ -426,8 +426,6 @@ export class CircuitEditor
 			if (component instanceof ComponentGround)
 			{
 				hasGround = true
-				//const joint = { jointIndex: this.joints.size, nodeIndex: 0, pos: component.points[0], outgoingDirections: [], labelDirection: 0, visible: true }
-				//this.joints.set(jointKey(component.points[0]), joint)
 			}
 		}
 		
@@ -638,7 +636,6 @@ export class CircuitEditor
 				component.renderCurrent(this, this.ctx)
 		
 		this.drawNodeVoltages()
-		//this.drawDebugNodes()
 		
 		if (!this.mouseDown && this.mousePosSnapped != null && this.mouseAddComponentClass != null)
 		{
