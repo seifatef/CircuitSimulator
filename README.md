@@ -1,6 +1,6 @@
 # DC Circuit Simulator
 
-**Authors:** [Seif Atef Moussa], [Seif Hesham Abdelmomem]  
+**Authors:** Seif Atef Moussa, Seif Hesham Abdelmomem  
 **Project Type:** University Circuit Analysis Project  
 **University:** Cairo University, Faculty of Engineering  
 **Department:** Computer Engineering Department
